@@ -80,11 +80,8 @@ for f in files:
 
 # add parameters to input.json (e.g. enabling the hardened runtime for macOS)
 if args.params is not None:
-	i = 0
-	while i < len(args.params):
+	for i in range(0, len(args.params), 2):
 		input_json["SignBatches"][0]["SigningInfo"]["Operations"][0]["Parameters"][args.params[i]] = args.params[i + 1]
-		i += 2
-
 policy_json = {
 	"Version": "1.0.0",
 	"Intent": "production release",
